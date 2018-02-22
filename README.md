@@ -31,7 +31,7 @@ Example files are located inside samples/.
 Change file paths and the public_key parameter with the one you found in your developer account (See prerequisites).
 Run the files and enjoy.
 
-### Tools
+## Tools
 Currently the following tools are available:
 
 * compress          (Reduce the size of pdf files)
