@@ -14,12 +14,16 @@ This library allow to manipulate pdf using the API of http://www.ilovepdf.com. S
 
 ## Installation
 
-Run:\> pip install pylovepdf
+```
+pip install pylovepdf
+```
 
 ## Manual installation
 
 Download the latest release.
-Run:\> python setup.py install
+```
+python setup.py install
+```
 
 ## Getting started
 
