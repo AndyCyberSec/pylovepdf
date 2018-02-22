@@ -1,4 +1,4 @@
 include README.md
 include LICENSE.md
 include CHANGES.txt
-include samples/*.py
+include pylovepdf/samples/*.py

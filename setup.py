@@ -15,7 +15,6 @@ setup(name='pylovepdf',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
-
       ],
       keywords='pdf unlock compress manipulate edit protect pdftojpg jpgtopdf pdfa',
       url='https://github.com/AndyBTuttofare/pylovepdf',
@@ -23,6 +22,6 @@ setup(name='pylovepdf',
       author_email='moonx2006@gmail.com',
       license='GNU GPLv3',
       packages=['pylovepdf', 'pylovepdf.tools'],
+      # data_files=[('pylovepdf/samples', ['*.py'])],
       install_requires=['requests', 'urllib3'],
-      include_package_data=True,
-      zip_safe=False)
+      include_package_data=True)
