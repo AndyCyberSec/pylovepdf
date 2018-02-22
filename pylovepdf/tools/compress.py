@@ -3,6 +3,12 @@ from pylovepdf.task import Task
 
 class Compress(Task):
 
+    """Class to initialize the compress tool
+
+    :param self.compression_level: the only param intended to be public
+
+    """
+
     def __init__(self, public_key, verify_ssl):
 
         self.tool = 'compress'
@@ -17,6 +23,10 @@ class Compress(Task):
 
     @property
     def compression_level_values(self):
+        """allowed values for compression_level
+
+        :return: tuple with available options
+        """
         return 'low', 'extreme', 'recommended'
 
     def process(self):
