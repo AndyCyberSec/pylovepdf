@@ -97,3 +97,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# pycharm
+.idea/
+
+# private files
+samples_priv/
