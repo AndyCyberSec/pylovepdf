@@ -14,7 +14,7 @@ class Task(ILovePdf):
         self.downloaded_filename = ''
         self.download_path = ''
         self.task = ''
-        self.status = 0
+        self.status = ''
 
         super(Task, self).__init__(public_key)
 
@@ -170,7 +170,7 @@ class Task(ILovePdf):
         response = self._send_request('post', 'process', payload, self.headers)
 
         print("File uploaded! Below file stats:")
-        self.status = int(response.status)
+        self.status = response.status
 
         print(response)
 
@@ -195,7 +195,7 @@ class Task(ILovePdf):
 
     def download(self):
 
-        if len(self.files) > 0 and not self.debug and self.status == 200:
+        if len(self.files) > 0 and not self.debug and self.status == 'TaskSuccess':
 
             print('Downloading processed file...')
 
