@@ -9,12 +9,12 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class Request(object):
 
     @staticmethod
-    def send(method, url, payload, headers=None, files=None, stream=None, verify_ssl=True, proxy=proxy):
+    def send(method, url, payload, headers=None, files=None, stream=None, verify_ssl=True, proxies=None):
 
         if method == 'post':
-            response = requests.post(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxy)
+            response = requests.post(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxies)
         else:
-            response = requests.get(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxy)
+            response = requests.get(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxies)
 
         return Response(response)
 
