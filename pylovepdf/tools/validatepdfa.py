@@ -3,12 +3,12 @@ from pylovepdf.task import Task
 
 class ValidatePdfA(Task):
 
-    def __init__(self, public_key, verify_ssl):
+    def __init__(self, public_key, verify_ssl, proxies):
 
         self.tool = 'validatepdfa'
         self.conformance = 'pdfa-2b'
 
-        super(ValidatePdfA, self).__init__(public_key, True, verify_ssl)
+        super(ValidatePdfA, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
     def allowed_properties(self):
