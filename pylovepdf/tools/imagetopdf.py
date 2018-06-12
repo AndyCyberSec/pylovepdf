@@ -3,7 +3,7 @@ from pylovepdf.task import Task
 
 class ImageToPdf(Task):
 
-    def __init__(self, public_key, verify_ssl):
+    def __init__(self, public_key, verify_ssl, proxies):
 
         self.orientation = 'portrait'
         self.margin = 0
@@ -11,7 +11,7 @@ class ImageToPdf(Task):
         self.merge_after = True
 
         self.tool = 'imagepdf'
-        super(ImageToPdf, self).__init__(public_key, True, verify_ssl)
+        super(ImageToPdf, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
     def allowed_properties(self):
