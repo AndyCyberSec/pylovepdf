@@ -12,9 +12,9 @@ class Request(object):
     def send(method, url, payload, headers=None, files=None, stream=None, verify_ssl=True, proxy=proxy):
 
         if method == 'post':
-            response = requests.post(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxy=proxy)
+            response = requests.post(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxy)
         else:
-            response = requests.get(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxy=proxy)
+            response = requests.get(url, headers=headers, data=payload, files=files, verify=verify_ssl, stream=stream, proxies=proxy)
 
         return Response(response)
 
