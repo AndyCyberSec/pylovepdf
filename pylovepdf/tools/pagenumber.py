@@ -3,7 +3,7 @@ from pylovepdf.task import Task
 
 class Pagenumber(Task):
 
-    def __init__(self, public_key, verify_ssl):
+    def __init__(self, public_key, verify_ssl, proxies):
 
         self.facing_pages = False
         self.first_cover = False
@@ -20,7 +20,7 @@ class Pagenumber(Task):
         self.text = '{n}'
 
         self.tool = 'pagenumber'
-        super(Pagenumber, self).__init__(public_key, True, verify_ssl)
+        super(Pagenumber, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
     def allowed_properties(self):
