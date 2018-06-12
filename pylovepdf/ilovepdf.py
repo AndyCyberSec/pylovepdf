@@ -33,11 +33,12 @@ class ILovePdf(object):
 
         """
 
-    def __init__(self, public_key, verify_ssl=True):
+    def __init__(self, public_key, verify_ssl=True, proxies=None):
 
         # auto explaining
         self.public_key = public_key
         self.ssl = verify_ssl
+        self.proxies = proxies
 
         # Currently not used
         self.secret_key = ''
@@ -76,7 +77,7 @@ class ILovePdf(object):
             server = self.working_server
 
         url = 'https://' + server + '/' + self.api_version + '/' + endpoint
-        response = Request.send(method, url, payload, headers, files, stream, verify_ssl=self.ssl)
+        response = Request.send(method, url, payload, headers, files, stream, verify_ssl=self.ssl, proxies=self.proxies)
 
         return response
 
