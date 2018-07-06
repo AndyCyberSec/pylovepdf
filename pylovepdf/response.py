@@ -6,26 +6,26 @@ class Response(object):
     def __init__(self, response):
 
         self.status = response.status_code
-
         try:
-            params = json.JSONDecoder().decode(response.text)
-
-            for attr, value in params.items():
-                setattr(self, attr, value)
-
-        except json.decoder.JSONDecodeError:
-            # if it's not json, it's the incoming pdf file or empty response
-            # deleting a task will not output anything from ilovepdf.com, so:
-            if 'application/pdf' in response.headers['content-type']:
+            headers = response.headers['content-type']
+            if 'application/pdf' in headers:
                 setattr(self, 'headers', response.headers)
                 setattr(self, 'iter_content', response.iter_content)
-            elif 'application/zip' in response.headers['content-type']:
+            elif 'application/zip' in headers:
                 setattr(self, 'headers', response.headers)
                 setattr(self, 'iter_content', response.iter_content)
-            elif 'image/jpeg'in response.headers['content-type']:
+            elif 'image/jpeg'in headers:
                 setattr(self, 'headers', response.headers)
                 setattr(self, 'iter_content', response.iter_content)
             else:
+                raise KeyError
+        except KeyError:
+            try:
+                params = json.JSONDecoder().decode(response.text)
+
+                for attr, value in params.items():
+                    setattr(self, attr, value)
+            except json.decoder.JSONDecodeError:
                 pass
 
     def __str__(self):
