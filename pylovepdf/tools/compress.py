@@ -9,12 +9,12 @@ class Compress(Task):
 
     """
 
-    def __init__(self, public_key, verify_ssl):
+    def __init__(self, public_key, verify_ssl, proxies):
 
         self.tool = 'compress'
         self.compression_level = 'recommended'
 
-        super(Compress, self).__init__(public_key, True, verify_ssl)
+        super(Compress, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
     def allowed_properties(self):
