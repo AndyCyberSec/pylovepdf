@@ -7,7 +7,7 @@ class Task(ILovePdf):
 
     tool = ''
 
-    def __init__(self, public_key, start=False, verify_ssl=True):
+    def __init__(self, public_key, start=False, verify_ssl=True, proxies=None):
 
         self.files = []
         self.downloaded_file_extension = ''
@@ -15,8 +15,9 @@ class Task(ILovePdf):
         self.download_path = ''
         self.task = ''
         self.status = ''
+        self.proxies = proxies
 
-        super(Task, self).__init__(public_key)
+        super(Task, self).__init__(public_key, proxies=self.proxies)
 
         self.begin = start
         self.file = None
@@ -44,14 +45,14 @@ class Task(ILovePdf):
 
         payload = {"public_key": self.public_key}
 
-        response = self._send_request('post', 'auth', payload, None, self.begin)
+        response = self._send_request('post', 'auth', payload, None, self.begin, proxies=self.proxies)
         self._set_token(response.token)
         self._set_headers()
 
     def start(self):
 
         headers = self.headers
-        response = self._send_request('get', 'start/' + self.tool, None, headers, self.begin)
+        response = self._send_request('get', 'start/' + self.tool, None, headers, self.begin, proxies=self.proxies)
         self._set_working_server(response.server)
 
         self.task = response.task
@@ -71,7 +72,7 @@ class Task(ILovePdf):
 
             with open(file.filename, 'rb') as f:
                 response = self._send_request('post', 'upload', payload=payload, headers=self.headers,
-                                              files={"file": f})
+                                              files={"file": f}, proxies=self.proxies)
 
             file.server_filename = response.server_filename
 
@@ -167,7 +168,7 @@ class Task(ILovePdf):
 
         payload = self.process()
 
-        response = self._send_request('post', 'process', payload, self.headers)
+        response = self._send_request('post', 'process', payload, self.headers, proxies=self.proxies)
 
         print("File uploaded! Below file stats:")
         self.status = response.status
@@ -181,7 +182,7 @@ class Task(ILovePdf):
     def check_task_status(self, printall=False):
 
         response = self._send_request('get', 'task/%s' % self.task, None, self.headers, False,
-                                      None, stream=False)
+                                      None, stream=False, proxies=self.proxies)
 
         if printall:
             print(response)
@@ -200,7 +201,7 @@ class Task(ILovePdf):
             print('Downloading processed file...')
 
             response = self._send_request('get', 'download/%s' % self.task, None, self.headers, False,
-                                          None, stream=True)
+                                          None, stream=True, proxies=self.proxies)
 
             # file_ext = str(response.headers['content-type']).split('/')
 
@@ -220,7 +221,7 @@ class Task(ILovePdf):
 
     def delete_current_task(self):
 
-        response = self._send_request('post', 'task/' + self.task, None, headers=self.headers)
+        response = self._send_request('post', 'task/' + self.task, None, headers=self.headers, proxies=self.proxies)
         print("Task delete %s" % response)
 
 
