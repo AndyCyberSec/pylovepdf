@@ -3,7 +3,7 @@ from pylovepdf.task import Task
 
 class Split(Task):
 
-    def __init__(self, public_key, verify_ssl):
+    def __init__(self, public_key, verify_ssl, proxies):
 
         self.tool = 'split'
         self.split_mode = 'ranges'
@@ -12,7 +12,7 @@ class Split(Task):
         self.remove_pages = None
         self.merge_after = False
 
-        super(Split, self).__init__(public_key, True, verify_ssl)
+        super(Split, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
     def allowed_properties(self):

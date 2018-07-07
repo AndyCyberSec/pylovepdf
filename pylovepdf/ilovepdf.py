@@ -33,11 +33,12 @@ class ILovePdf(object):
 
         """
 
-    def __init__(self, public_key, verify_ssl=True):
+    def __init__(self, public_key, verify_ssl=True, proxies=None):
 
         # auto explaining
         self.public_key = public_key
         self.ssl = verify_ssl
+        self.proxies = proxies
 
         # Currently not used
         self.secret_key = ''
@@ -68,7 +69,7 @@ class ILovePdf(object):
 
         self.working_server = working_server
 
-    def _send_request(self, method, endpoint, payload, headers=None, start=False, files=None, stream=None):
+    def _send_request(self, method, endpoint, payload, headers=None, start=False, files=None, stream=None, proxies=None):
 
         server = self.start_server
 
@@ -76,7 +77,7 @@ class ILovePdf(object):
             server = self.working_server
 
         url = 'https://' + server + '/' + self.api_version + '/' + endpoint
-        response = Request.send(method, url, payload, headers, files, stream, verify_ssl=self.ssl)
+        response = Request.send(method, url, payload, headers, files, stream, verify_ssl=self.ssl, proxies=proxies)
 
         return response
 
@@ -100,4 +101,4 @@ class ILovePdf(object):
         module_name = importlib.import_module('.tools.' + tool.lower(), package='pylovepdf')
         class_name = getattr(module_name, tool.title())
 
-        return class_name(self.public_key, self.ssl)
+        return class_name(self.public_key, self.ssl, self.proxies)
