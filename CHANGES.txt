@@ -1,3 +1,5 @@
 v1.3.0, 21/02/2018 -- Initial release.
 
 v1.3.1, 31/03/2018 -- Fixed bug with status response (int), now compatible with (string) TaskSuccess response from ilovepdf.com
+
+v1.3.2 07/07/2018 -- Proxy support and increased dowload speed of incoming files
