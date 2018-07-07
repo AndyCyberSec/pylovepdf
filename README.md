@@ -1,4 +1,4 @@
-# pylovepdf 1.3.1
+# pylovepdf 1.3.2
 
 ilovepdf.com python API library
 
