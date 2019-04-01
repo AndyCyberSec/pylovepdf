@@ -1,6 +1,7 @@
 from pylovepdf.ilovepdf import ILovePdf
 from pylovepdf.file import File
 import re
+import os
 
 
 class Task(ILovePdf):
@@ -178,6 +179,9 @@ class Task(ILovePdf):
 
     def set_output_folder(self, path):
 
+        if not os.path.exists(path):
+            os.makedirs(path)
+
         self.download_path = path
 
     def check_task_status(self, printall=False):
@@ -209,13 +213,13 @@ class Task(ILovePdf):
             filename = self.clean_filename(re.search(r'(filename=\")(.+\.\w+)(\")',
                                                      str(response.headers['content-disposition'])).group(2))
 
-            with open(self.download_path + '\\' + filename, 'wb') as f:
+            with open(os.path.join(self.download_path, filename), 'wb') as f:
                 for chunk in response.iter_content(10):
                     f.write(chunk)
 
             print('File downloaded!')
 
-            return True
+            return filename
 
         else:
             print("no file to be downloaded")
