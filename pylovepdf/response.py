@@ -23,8 +23,10 @@ class Response(object):
             try:
                 params = json.JSONDecoder().decode(response.text)
 
-                for attr, value in params.items():
-                    setattr(self, attr, value)
+                if params:
+                    for attr, value in params.items():
+                        setattr(self, attr, value)
+                        
             except json.decoder.JSONDecodeError:
                 pass
 
