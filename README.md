@@ -12,10 +12,10 @@ This library allow to manipulate pdf using the API of http://www.ilovepdf.com. S
 * [Python 3.x.x]
 * [Requests] (http://it.python-requests.org/it/latest/)
 
-## Installation
+## Installation (older version)
 
 ```
-pip install pylovepdf (older version) 
+pip install pylovepdf 
 ```
 
 ## Manual installation (up to date) 
