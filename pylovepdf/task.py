@@ -225,5 +225,13 @@ class Task(ILovePdf):
         response = self._send_request('post', 'task/' + self.task, None, headers=self.headers, proxies=self.proxies)
         print("Task delete %s" % response)
 
-
+    def get_task_information(self):
+        """
+        Give information about a task status.
+        If the task is TaskSuccess, TaskSuccessWithWarnings or TaskError it will also specify all files of the Task
+        and their status one by one.
+        :return: Response of the request.
+        """
+        return self._send_request('get', 'task/%s' % self.task, None, self.headers, False,
+                                      None, stream=False, proxies=self.proxies)
 
