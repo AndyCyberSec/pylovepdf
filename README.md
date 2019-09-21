@@ -15,10 +15,10 @@ This library allow to manipulate pdf using the API of http://www.ilovepdf.com. S
 ## Installation
 
 ```
-pip install pylovepdf
+pip install pylovepdf (older version) 
 ```
 
-## Manual installation
+## Manual installation (up to date) 
 
 Download the latest release.
 ```
@@ -87,8 +87,4 @@ I use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Andrea Bruschi** - *Initial work* - [AndyBTuttofare](https://github.com/AndyBTuttofare)
-
-## Acknowledgments
-
-* mumble mumble..
+* **Andrea Bruschi** - *Initial work* - [AndyCyberSec](https://github.com/AndyCyberSec)
