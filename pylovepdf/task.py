@@ -2,6 +2,7 @@ from pylovepdf.ilovepdf import ILovePdf
 from pylovepdf.file import File
 import re
 import os
+import uuid
 
 
 class Task(ILovePdf):
@@ -195,8 +196,14 @@ class Task(ILovePdf):
             return response.status
 
     def clean_filename(self, filename):
-
-        return "_".join(filename.split('_')[1:])
+        """
+        Clean filename from additional suffixes added by the server.
+        Assures zip filename uniquess by adding a randomly generated string prefix.
+        :param filename: filename to process
+        """
+        if ".zip" in filename:
+            return str(uuid.uuid1())[:8]+ '_' + filename
+        return "_".join(filename.split('_')[:-2]) + '.' + filename.rsplit(".", 1)[-1]
 
     def download(self):
 
