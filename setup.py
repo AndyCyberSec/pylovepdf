@@ -7,7 +7,7 @@ def readme():
 
 
 setup(name='pylovepdf',
-      version='1.3.2',
+      version='1.3.3',
       description='ilovepdf.com python API library',
       long_description=readme(),
       classifiers=[
