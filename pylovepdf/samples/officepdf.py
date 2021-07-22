@@ -1,6 +1,6 @@
-from pylovepdf.tools.officepdf import OfficeToPdf
+from pylovepdf.tools.officepdf import Officepdf
 
-t = OfficeToPdf('public_key', verify_ssl=True)
+t = Officepdf('public_key', verify_ssl=True)
 t.add_file('pdf_file')
 t.debug = False
 t.set_output_folder('output_directory')
