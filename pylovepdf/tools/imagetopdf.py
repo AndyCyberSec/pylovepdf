@@ -10,7 +10,7 @@ class ImageToPdf(Task):
         self.pagesize = 'fit'
         self.merge_after = True
 
-        self.tool = 'imagepdf'
+        self.tool = 'imagetopdf'
         super(ImageToPdf, self).__init__(public_key, True, verify_ssl, proxies)
 
     @property
