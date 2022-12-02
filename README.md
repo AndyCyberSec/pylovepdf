@@ -1,4 +1,4 @@
-# pylovepdf 1.3.3
+# pylovepdf 1.3.3 - UNMAINTAINED!!
 
 ilovepdf.com python API library
 
