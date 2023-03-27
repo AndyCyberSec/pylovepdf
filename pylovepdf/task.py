@@ -205,7 +205,7 @@ class Task(ILovePdf):
             return str(uuid.uuid1())[:8]+ '_' + filename
         return "_".join(filename.split('_')[:-2]) + '.' + filename.rsplit(".", 1)[-1]
 
-    def download(self):
+    def download(self, filename=None):
 
         if len(self.files) > 0 and not self.debug and self.status == 'TaskSuccess':
 
@@ -216,7 +216,8 @@ class Task(ILovePdf):
 
             # file_ext = str(response.headers['content-type']).split('/')
 
-            filename = self.clean_filename(re.search(r'(filename=\")(.+\.\w+)(\")',
+            if not filename:
+                filename = self.clean_filename(re.search(r'(filename=\")(.+\.\w+)(\")',
                                                      str(response.headers['content-disposition'])).group(2))
 
             with open(os.path.join(self.download_path, filename), 'wb') as f:
